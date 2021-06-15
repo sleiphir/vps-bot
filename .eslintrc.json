@@ -37,6 +37,7 @@
       "always"
     ],
     "curly": "error",
+    "no-useless-escape": "off",
     "object-curly-newline": [
       "error",
       {

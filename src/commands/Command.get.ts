@@ -10,7 +10,9 @@ export class GetCommand extends AbstractCommand {
 
   async execute (): Promise<void> {
     if (!this.canExecute()) { return; }
-    const path = this.args.join(" ");
+    const path = (this.args.length > 1)
+      ? this.args.join(" ").replaceAll(" ", "\ ")
+      : this.args[0];
     const filename = path.split("/").pop();
 
     this.message.channel.send({
@@ -18,6 +20,8 @@ export class GetCommand extends AbstractCommand {
         attachment: path,
         name: filename,
       }],
+    }).catch(() => {
+      this.message.channel.send("`File not found.`");
     });
   }
 }
