@@ -25,7 +25,18 @@ export class BashCommand extends AbstractCommand {
         message = `${error.message}`;
       }
 
-      this.message.channel.send(`\`\`\`sh\n${message}\n\`\`\``);
+      // Max character count in one message
+      const MAX_LENGTH = 1965;
+
+      if (message.length > MAX_LENGTH) {
+        const messages = message.match(new RegExp(`.{1,${MAX_LENGTH}}`, "gs"));
+
+        for (message of messages) {
+          this.message.channel.send(`\`\`\`sh\n${message}\n\`\`\``);
+        }
+      } else {
+        this.message.channel.send(`\`\`\`sh\n${message}\n\`\`\``);
+      }
     });
   }
 
