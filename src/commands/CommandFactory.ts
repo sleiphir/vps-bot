@@ -1,5 +1,6 @@
 import { Client, Message } from "discord.js";
 import { AbstractCommand, CommandType } from "./AbstractCommand";
+import { GetCommand } from "./Command.get";
 import { BashCommand } from "./Command.sh";
 
 export class CommandFactory {
@@ -11,6 +12,9 @@ export class CommandFactory {
     switch (type) {
     case CommandType.sh:
       command = new BashCommand(client, message, args);
+      break;
+    case CommandType.get:
+      command = new GetCommand(client, message, args);
       break;
     default:
       command = null;

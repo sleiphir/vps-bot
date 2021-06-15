@@ -1,7 +1,8 @@
 import { Client, GuildMember, Message, User } from "discord.js";
 
 export enum CommandType {
-  sh
+  sh,
+  get
 }
 
 export abstract class AbstractCommand {
