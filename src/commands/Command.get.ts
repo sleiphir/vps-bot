@@ -10,7 +10,7 @@ export class GetCommand extends AbstractCommand {
 
   async execute (): Promise<void> {
     if (!this.canExecute()) { return; }
-    const path = this.args[0];
+    const path = this.args.join(" ");
     const filename = path.split("/").pop();
 
     this.message.channel.send({
