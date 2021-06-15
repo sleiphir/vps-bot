@@ -32,10 +32,10 @@ export class BashCommand extends AbstractCommand {
         const messages = message.match(new RegExp(`.{1,${MAX_LENGTH}}`, "gs"));
 
         for (message of messages) {
-          this.message.channel.send(`\`\`\`sh\n${message}\n\`\`\``);
+          this.message.channel.send(`\`\`\`css\n${message}\n\`\`\``);
         }
       } else {
-        this.message.channel.send(`\`\`\`sh\n${message}\n\`\`\``);
+        this.message.channel.send(`\`\`\`css\n${message}\n\`\`\``);
       }
     });
   }
